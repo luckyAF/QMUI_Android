@@ -5,18 +5,13 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
-
 import com.qmuiteam.qmui.util.QMUIPackageHelper
 import com.qmuiteam.qmui.widget.QMUITopBar
 import com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView
 import com.qmuiteam.qmuidemo.R
 import com.qmuiteam.qmuidemo.base.BaseFragment
-
 import java.text.SimpleDateFormat
-import java.util.Locale
-
-import butterknife.BindView
-import butterknife.ButterKnife
+import java.util.*
 
 /**
  * 关于界面
@@ -25,14 +20,17 @@ import butterknife.ButterKnife
  */
 class QDAboutFragment : BaseFragment() {
 
-    @BindView(R.id.topbar) internal var mTopBar: QMUITopBar? = null
-    @BindView(R.id.version) internal var mVersionTextView: TextView? = null
-    @BindView(R.id.about_list) internal var mAboutGroupListView: QMUIGroupListView? = null
-    @BindView(R.id.copyright) internal var mCopyrightTextView: TextView? = null
+    private var mTopBar: QMUITopBar? = null
+    private var mVersionTextView: TextView? = null
+    private var mAboutGroupListView: QMUIGroupListView? = null
+    private var mCopyrightTextView: TextView? = null
 
     override fun onCreateView(): View {
         val root = LayoutInflater.from(activity).inflate(R.layout.fragment_about, null)
-        ButterKnife.bind(this, root)
+        mTopBar = root?.findViewById(R.id.topbar) as QMUITopBar
+        mVersionTextView = root?.findViewById(R.id.version) as TextView
+        mAboutGroupListView = root?.findViewById(R.id.about_list) as QMUIGroupListView
+        mCopyrightTextView = root?.findViewById(R.id.copyright) as TextView
 
         initTopBar()
 
@@ -55,7 +53,7 @@ class QDAboutFragment : BaseFragment() {
 
         val dateFormat = SimpleDateFormat("yyyy", Locale.CHINA)
         val currentYear = dateFormat.format(java.util.Date())
-        mCopyrightTextView!!.setText(String.format(resources.getString(R.string.about_copyright), currentYear))
+        mCopyrightTextView!!.setText("© $currentYear QMUI Team All rights reserved.")
 
         return root
     }
