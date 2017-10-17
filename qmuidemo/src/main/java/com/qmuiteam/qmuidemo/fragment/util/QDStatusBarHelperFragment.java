@@ -64,7 +64,7 @@ public class QDStatusBarHelperFragment extends BaseFragment {
                 .addItemView(mGroupListView.createItemView("沉浸式状态栏"), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intentTranslucent = TranslucentActivity.createActivity(getContext(), true);
+                        Intent intentTranslucent = TranslucentActivity.Companion.createActivity(getContext(), true);
                         startActivity(intentTranslucent);
                         getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_still);
                     }
