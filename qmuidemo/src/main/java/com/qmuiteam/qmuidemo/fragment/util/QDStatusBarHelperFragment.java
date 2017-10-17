@@ -92,7 +92,7 @@ public class QDStatusBarHelperFragment extends BaseFragment {
                 .addItemView(mGroupListView.createItemView("获取状态栏的实际高度"), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String result = String.format(getResources().getString(R.string.statusBarHelper_statusBar_height_result), QMUIStatusBarHelper.getStatusbarHeight(getContext()));
+                        String result = "状态栏实际高度为 " + QMUIStatusBarHelper.getStatusbarHeight(getContext());
                         final QMUITipDialog tipDialog = new QMUITipDialog.Builder(getContext()).setTipWord(result).create();
                         tipDialog.show();
                         mGroupListView.postDelayed(new Runnable() {
