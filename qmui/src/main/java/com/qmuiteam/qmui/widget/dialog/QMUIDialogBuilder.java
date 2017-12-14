@@ -183,18 +183,39 @@ public abstract class QMUIDialogBuilder<T extends QMUIDialogBuilder> {
         return (T) this;
     }
 
-    public QMUIDialogAction setLeftAction(String str, QMUIDialogAction.ActionListener listener) {
+    /**
+     * 添加左侧普通类型的操作按钮
+     *
+     * @param str      文案
+     * @param listener 点击回调事件
+     */
+    public T setLeftAction(String str, QMUIDialogAction.ActionListener listener) {
         return setLeftAction(0, str, listener);
     }
 
-    public QMUIDialogAction setLeftAction(int iconRes, String str, QMUIDialogAction.ActionListener listener) {
+    /**
+     * 添加左侧普通类型的操作按钮
+     *
+     * @param iconRes  图标
+     * @param str      文案
+     * @param listener 点击回调事件
+     */
+    public T setLeftAction(int iconRes, String str, QMUIDialogAction.ActionListener listener) {
         return setLeftAction(iconRes, str, QMUIDialogAction.ACTION_PROP_NEUTRAL, listener);
     }
 
-
-    public QMUIDialogAction setLeftAction(int iconRes, String str, @QMUIDialogAction.Prop int prop, QMUIDialogAction.ActionListener listener) {
+    /**
+     * 添加左侧普通类型的操作按钮
+     *
+     * @param iconRes  图标
+     * @param str      文案
+     * @param prop     属性
+     * @param listener 点击回调事件
+     */
+    @SuppressWarnings("unchecked")
+    public T setLeftAction(int iconRes, String str, @QMUIDialogAction.Prop int prop, QMUIDialogAction.ActionListener listener) {
         mLeftAction = new QMUIDialogAction(mContext, iconRes, str, QMUIDialogAction.ACTION_TYPE_NORMAL, prop, listener);
-        return mLeftAction;
+        return (T)this;
     }
 
     //endregion
